@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CS 408 Lab #2</string>
+    <string name="action_settings">Settings</string>
+    <string name="rock">ROCK</string>
+    <string name="paper">PAPER</string>
+    <string name="scissors">SCISSORS</string>
+    <string name="player_3_computer_3">Player :3 , Computer: 3</string>
+</resources>
