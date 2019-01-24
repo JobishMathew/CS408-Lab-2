@@ -33,6 +33,29 @@ public class MainActivity extends AppCompatActivity {
         viewInstruction.setText("Welcome to Rock-Paper-Scissors! Please choose your weapon");
     }
 
+
+    //Created by Jobish on 1/24/19 for button Rock
+    public void buttonRockClicked(View v){
+        TextView playerWeapon = (TextView) findViewById(R.id.txtPlayerWeapon);
+        playerWeapon.setText("Players Weapon: Rock");
+    }
+    public void buttonPaperClicked(View V){
+        TextView playerWeapon = (TextView) findViewById(R.id.txtPlayerWeapon);
+        playerWeapon.setText("Players Weapon: Paper");
+    }
+    public void buttonScissorsClicked(View V){
+        TextView playerWeapon = (TextView) findViewById(R.id.txtPlayerWeapon);
+        playerWeapon.setText("Players Weapon: Scissors");
+    }
+
+    public void computerChoice(){
+        int random;
+    }
+    public void displayPlayerWeapon( Weapon v){
+        TextView playerWeapon = (TextView) findViewById(R.id.txtPlayerWeapon);
+        playerWeapon.setText("");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

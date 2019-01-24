@@ -29,18 +29,21 @@
             android:id="@+id/btnRock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="buttonRockClicked"
             android:text="@string/rock" />
 
         <Button
             android:id="@+id/btnPaper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="buttonPaperClicked"
             android:text="@string/paper" />
 
         <Button
             android:id="@+id/btnScissors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="buttonScissorsClicked"
             android:text="@string/scissors" />
 
         <TextView
@@ -53,7 +56,8 @@
         <TextView
             android:id="@+id/txtPlayerWeapon"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/txtComputerWeapon"
