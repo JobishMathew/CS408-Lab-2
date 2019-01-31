@@ -102,12 +102,12 @@ public class MainActivity extends AppCompatActivity {
         TextView winner = (TextView) findViewById(R.id.txtDispplayWinner);
        if (userChoice.equals(Weapon.ROCK)) {
            if (computerChoice.equals(Weapon.SCISSORS)){
-                winner.setText("The Player wins!..Rock beats scissors.");
+                winner.setText("The Player wins!.. " + userChoice + " beats " + computerChoice);
                 userWinCount++;
                 printCount(userWinCount,computerWinCount);
            }
             else if (computerChoice.equals(Weapon.PAPER)){
-                winner.setText( "The computer wins!..Paper beats rock.");
+                winner.setText( "The computer wins!.. " +computerChoice+ " beats " + userChoice);
                 computerWinCount++;
                 printCount(userWinCount,computerWinCount);
            }
@@ -115,12 +115,13 @@ public class MainActivity extends AppCompatActivity {
                 winner.setText("The game is tied!");
         } else if (userChoice.equals(Weapon.PAPER)) {
             if (computerChoice.equals(Weapon.SCISSORS)){
-                winner.setText("The computer wins!..Scissors beats paper.");
+                winner.setText("The computer wins!.. "+ computerChoice+ " beats " + userChoice);
                 computerWinCount++;
                 printCount(userWinCount,computerWinCount);
             }
             else if (computerChoice.equals(Weapon.ROCK)){
-                winner.setText("The Player wins!..Paper beats rock.");
+                winner.setText("The Player wins!.. "+ userChoice+ " beats " + computerChoice);
+
                 userWinCount++;
                 printCount(userWinCount,computerWinCount);
             }
@@ -128,12 +129,12 @@ public class MainActivity extends AppCompatActivity {
                 winner.setText("The game is tied!");
         } else if (userChoice.equals(Weapon.SCISSORS)) {
             if (computerChoice.equals(Weapon.ROCK)){
-                winner.setText("The computer wins!..Rock beats scissors.");
+                winner.setText("The computer wins!.. "+computerChoice+ " beats " +userChoice);
                 computerWinCount++;
                 printCount(userWinCount,computerWinCount);
             }
             else if (computerChoice.equals(Weapon.PAPER)){
-                winner.setText("The Player wins!..Scissors beats paper.");
+                winner.setText("The Player wins!.. "+userChoice+ " beats " +computerChoice);
                 userWinCount++;
                 printCount(userWinCount,computerWinCount);
             }
