@@ -50,25 +50,27 @@
             android:id="@+id/txtCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/player_3_computer_3"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtPlayerWeapon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtComputerWeapon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtDispplayWinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp" />
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            tools:fontFamily="sans-serif" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

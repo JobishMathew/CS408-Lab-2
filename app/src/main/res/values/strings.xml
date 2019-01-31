@@ -4,5 +4,4 @@
     <string name="rock">ROCK</string>
     <string name="paper">PAPER</string>
     <string name="scissors">SCISSORS</string>
-    <string name="player_3_computer_3">Player :3 , Computer: 3</string>
 </resources>

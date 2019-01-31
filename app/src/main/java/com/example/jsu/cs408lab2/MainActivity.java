@@ -10,8 +10,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import android.widget.*;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    Random rand = new Random();
+    //random Variable for computer choice
+    private int r ;
+    private Weapon userWeapon;
+    private Weapon computerWeapon;
+    private int userWinCount;
+    private int computerWinCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,29 +40,112 @@ public class MainActivity extends AppCompatActivity {
 
         TextView viewInstruction = (TextView) findViewById(R.id.txtInstruction);
         viewInstruction.setText("Welcome to Rock-Paper-Scissors! Please choose your weapon");
+
+        userWinCount =0;
+        computerWinCount =0;
+
+
     }
 
 
-    //Created by Jobish on 1/24/19 for button Rock
+    //Created by Jobish on 1/24/19
     public void buttonRockClicked(View v){
-        TextView playerWeapon = (TextView) findViewById(R.id.txtPlayerWeapon);
-        playerWeapon.setText("Players Weapon: Rock");
+        displayPlayerWeapon(Weapon.ROCK);
+        userWeapon = Weapon.ROCK;
+        computerChoice();
+
     }
     public void buttonPaperClicked(View V){
-        TextView playerWeapon = (TextView) findViewById(R.id.txtPlayerWeapon);
-        playerWeapon.setText("Players Weapon: Paper");
+        displayPlayerWeapon(Weapon.PAPER);
+        userWeapon = Weapon.PAPER;
+        computerChoice();
+
     }
     public void buttonScissorsClicked(View V){
+        displayPlayerWeapon(Weapon.SCISSORS);
+        userWeapon = Weapon.SCISSORS;
+        computerChoice();
+
+    }
+    public void displayPlayerWeapon( Weapon w){
         TextView playerWeapon = (TextView) findViewById(R.id.txtPlayerWeapon);
-        playerWeapon.setText("Players Weapon: Scissors");
+        playerWeapon.setText("Player's Weapon: "+ w.toString());
     }
 
     public void computerChoice(){
-        int random;
+       r = rand.nextInt(3) + 1;
+       switch (r){
+           case 1: displayComputerWeapon(Weapon.ROCK);
+                    computerWeapon = Weapon.ROCK;
+                    findWinner(userWeapon,computerWeapon);
+                    break;
+           case 2: displayComputerWeapon(Weapon.PAPER);
+                    computerWeapon = Weapon.PAPER;
+                    findWinner(userWeapon,computerWeapon);
+                    break;
+           case 3: displayComputerWeapon(Weapon.SCISSORS);
+                    computerWeapon = Weapon.SCISSORS;
+                    findWinner(userWeapon,computerWeapon);
+                    break;
+           default: displayComputerWeapon(Weapon.SCISSORS);
+                    computerWeapon = Weapon.SCISSORS;
+                    findWinner(userWeapon,computerWeapon);
+                    break;
+       }
     }
-    public void displayPlayerWeapon( Weapon v){
-        TextView playerWeapon = (TextView) findViewById(R.id.txtPlayerWeapon);
-        playerWeapon.setText("");
+
+    public void displayComputerWeapon(Weapon w){
+        TextView computerWeapon = (TextView) findViewById(R.id.txtComputerWeapon);
+        computerWeapon.setText("Computer's Weapon: "+ w.toString());
+    }
+    public void findWinner(Weapon userChoice, Weapon computerChoice){
+        TextView winner = (TextView) findViewById(R.id.txtDispplayWinner);
+       if (userChoice.equals(Weapon.ROCK)) {
+           if (computerChoice.equals(Weapon.SCISSORS)){
+                winner.setText("The Player wins!..Rock beats scissors.");
+                userWinCount++;
+                printCount(userWinCount,computerWinCount);
+           }
+            else if (computerChoice.equals(Weapon.PAPER)){
+                winner.setText( "The computer wins!..Paper beats rock.");
+                computerWinCount++;
+                printCount(userWinCount,computerWinCount);
+           }
+            else
+                winner.setText("The game is tied!");
+        } else if (userChoice.equals(Weapon.PAPER)) {
+            if (computerChoice.equals(Weapon.SCISSORS)){
+                winner.setText("The computer wins!..Scissors beats paper.");
+                computerWinCount++;
+                printCount(userWinCount,computerWinCount);
+            }
+            else if (computerChoice.equals(Weapon.ROCK)){
+                winner.setText("The Player wins!..Paper beats rock.");
+                userWinCount++;
+                printCount(userWinCount,computerWinCount);
+            }
+            else
+                winner.setText("The game is tied!");
+        } else if (userChoice.equals(Weapon.SCISSORS)) {
+            if (computerChoice.equals(Weapon.ROCK)){
+                winner.setText("The computer wins!..Rock beats scissors.");
+                computerWinCount++;
+                printCount(userWinCount,computerWinCount);
+            }
+            else if (computerChoice.equals(Weapon.PAPER)){
+                winner.setText("The Player wins!..Scissors beats paper.");
+                userWinCount++;
+                printCount(userWinCount,computerWinCount);
+            }
+
+            else
+                winner.setText("The game is tied!");
+        }
+    }
+
+    public void printCount(int userCount, int computerCount){
+        TextView countView = (TextView) findViewById(R.id.txtCount);
+        countView.setText("Player: "+ userCount +" Computer: "+ computerCount);
     }
 
     @Override
@@ -91,5 +183,5 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public String toString() { return message; }
 
-    };
+    }
 }
