@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Created by Jobish on 1/24/19
+    //Created by Jobish on 1/31/19
     public void buttonRockClicked(View v){
         displayPlayerWeapon(Weapon.ROCK);
         userWeapon = Weapon.ROCK;
@@ -93,54 +93,52 @@ public class MainActivity extends AppCompatActivity {
                     break;
        }
     }
-
     public void displayComputerWeapon(Weapon w){
         TextView computerWeapon = (TextView) findViewById(R.id.txtComputerWeapon);
         computerWeapon.setText("Computer's Weapon: "+ w.toString());
     }
+
+
     public void findWinner(Weapon userChoice, Weapon computerChoice){
-        TextView winner = (TextView) findViewById(R.id.txtDispplayWinner);
        if (userChoice.equals(Weapon.ROCK)) {
            if (computerChoice.equals(Weapon.SCISSORS)){
-                winner.setText("The Player wins!.. " + userChoice + " beats " + computerChoice);
+                playerWinPrinting(userChoice,computerChoice);
                 userWinCount++;
                 printCount(userWinCount,computerWinCount);
            }
             else if (computerChoice.equals(Weapon.PAPER)){
-                winner.setText( "The computer wins!.. " +computerChoice+ " beats " + userChoice);
+               computerWinPrinting(computerChoice,userChoice);
                 computerWinCount++;
                 printCount(userWinCount,computerWinCount);
            }
             else
-                winner.setText("The game is tied!");
+                tiePrinting();
         } else if (userChoice.equals(Weapon.PAPER)) {
             if (computerChoice.equals(Weapon.SCISSORS)){
-                winner.setText("The computer wins!.. "+ computerChoice+ " beats " + userChoice);
+                computerWinPrinting(computerChoice,userChoice);
                 computerWinCount++;
                 printCount(userWinCount,computerWinCount);
             }
             else if (computerChoice.equals(Weapon.ROCK)){
-                winner.setText("The Player wins!.. "+ userChoice+ " beats " + computerChoice);
-
+                playerWinPrinting(userChoice,computerChoice);
                 userWinCount++;
                 printCount(userWinCount,computerWinCount);
             }
             else
-                winner.setText("The game is tied!");
+                tiePrinting();
         } else if (userChoice.equals(Weapon.SCISSORS)) {
             if (computerChoice.equals(Weapon.ROCK)){
-                winner.setText("The computer wins!.. "+computerChoice+ " beats " +userChoice);
+                computerWinPrinting(computerChoice,userChoice);
                 computerWinCount++;
                 printCount(userWinCount,computerWinCount);
             }
             else if (computerChoice.equals(Weapon.PAPER)){
-                winner.setText("The Player wins!.. "+userChoice+ " beats " +computerChoice);
+                playerWinPrinting(userChoice,computerChoice);
                 userWinCount++;
                 printCount(userWinCount,computerWinCount);
             }
-
             else
-                winner.setText("The game is tied!");
+                tiePrinting();
         }
     }
 
@@ -148,6 +146,23 @@ public class MainActivity extends AppCompatActivity {
         TextView countView = (TextView) findViewById(R.id.txtCount);
         countView.setText("Player: "+ userCount +" Computer: "+ computerCount);
     }
+
+    public void playerWinPrinting(Weapon user, Weapon computer){
+        TextView playerWinner = (TextView) findViewById(R.id.txtDispplayWinner);
+        playerWinner.setText("The Player wins!.. \n" + user + " beats " + computer);
+    }
+
+    public void computerWinPrinting( Weapon computer, Weapon user) {
+        TextView computerWinner = (TextView) findViewById(R.id.txtDispplayWinner);
+        computerWinner.setText( "The computer wins!.. \n" +computer+ " beats " + user);
+    }
+
+    public void tiePrinting(){
+        TextView tie = (TextView) findViewById(R.id.txtDispplayWinner);
+        tie.setText("The game is tied!");
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
